@@ -2,7 +2,7 @@
 Author: LEON leon.kepler@bytedance.com
 Date: 2024-11-29 14:30:33
 LastEditors: LEON leon.kepler@bytedance.com
-LastEditTime: 2024-11-29 16:23:39
+LastEditTime: 2024-11-29 21:59:17
 FilePath: /ava/scripts/run_federated_avatar.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -20,9 +20,6 @@ def main():
     # Load dataset and knowledge base
     kb = load_skb(args.dataset)
     qa_dataset = load_qa(args.dataset)
-    print(type(kb))
-    print(kb.__dict__)
-    print(kb[0])
     
     # Create output directory
     os.makedirs(args.output_dir, exist_ok=True)
@@ -32,7 +29,12 @@ def main():
         kb=kb,
         emb_model=args.emb_model,
         agent_llm=args.agent_llm,
-        api_func_llm=args.api_func_llm
+        api_func_llm=args.api_func_llm,
+        output_dir=args.output_dir,
+        chunk_size=args.chunk_size,
+        node_emb_dir=args.node_emb_dir,
+        query_emb_dir=args.query_emb_dir,
+        chunk_emb_dir=args.chunk_emb_dir,
     )
     
     # Initialize federated optimizer with core parameters
