@@ -14,7 +14,7 @@ export PYTHONPATH="."
 # Configuration
 DATASET="amazon"
 NUM_CLIENTS=1
-N_ROUNDS=5
+N_ROUNDS=3
 SPLIT_TYPE="random"  # or "group"
 EMB_MODEL="text-embedding-ada-002"
 AGENT_LLM="gpt-4"
