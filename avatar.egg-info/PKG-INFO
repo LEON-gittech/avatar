@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: avatar
+Version: 0.1
+Requires-Dist: openai
+Requires-Dist: tenacity
+Requires-Dist: numpy
+Requires-Dist: torch
+Requires-Dist: stark-qa

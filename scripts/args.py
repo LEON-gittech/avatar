@@ -1,3 +1,11 @@
+'''
+Author: LEON leon.kepler@bytedance.com
+Date: 2024-11-29 14:20:26
+LastEditors: LEON leon.kepler@bytedance.com
+LastEditTime: 2024-11-29 16:09:06
+FilePath: /ava/avatar/scripts/args.py
+Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+'''
 import argparse
 import json
 
@@ -60,6 +68,18 @@ def parse_args():
     parser.add_argument("--chunk_emb_dir", default=None, help="chunk emb dir")
     parser.add_argument("--query_emb_dir", default=None, help="query emb dir")
     parser.add_argument("--node_emb_dir", default=None, help="node emb dir")
+
+    # Add federated learning specific arguments
+    parser.add_argument('--num_clients', type=int, default=3,
+                        help='Number of federated learning clients')
+    parser.add_argument('--n_rounds', type=int, default=5,
+                        help='Number of federation rounds')
+    parser.add_argument('--split_type', type=str, default='random',
+                        choices=['random', 'group'],
+                        help='Method to split data among clients')
+    parser.add_argument('--fl_aggregate', type=str, default='llm',
+                        choices=['llm', 'vote'],
+                        help='Method to aggregate client prompts')
 
     return parser.parse_args()
 
